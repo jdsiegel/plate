@@ -1,0 +1,170 @@
+//** SCREEN STYLES **//
+
+// Imports --------------------------------------------------------------
+
+@import "defaults";
+@import "debug";
+
+/* Layout -------------------------------------------------------------- */
+
+@include susy;
+
+// change '.container' to match your HTML container element
+// or @extend it to apply multiple containers on your site.
+.container {
+  @include container;
+  &.show-grid {
+    @include show-grid("grid.png"); 
+  }
+}
+
+// show-grid loads a 64+16x24 grid image by default
+// For other grid settings, run `compass grid-img 30+10x20`
+// Where 30 is the column width, 10 is the gutter width,
+// and 20 is the (optional) line-height.
+
+/* Styles -------------------------------------------------------------- */
+
+#header-page {
+}
+
+#header-content {
+  @extend .container;
+
+  @include padding-leader;
+
+  #logo {
+    $logo-columns: 7;
+    @include columns($logo-columns);
+    @include alpha;
+
+    h1 {
+      @include replace-text("plate.jpg", 0, 0);
+      @include columns(3, $logo-columns);
+      height: image-height("plate.jpg");
+      margin-bottom: 0;
+    }
+
+    h2 {
+      @include padding-leader;
+      @include columns(4, $logo-columns);
+      @include omega($logo-columns);
+    }
+  }
+
+  .nav {
+    @include columns(4);
+    @include omega;
+    @include suffix(1);
+
+    @include leader(0.5);
+    @include trailer(0.5);
+
+    ul {
+      $menu-color: #555;
+
+      @include horizontal-list(5px);
+      @include inline-block;
+      @include border-radius(3px);
+      padding-left: 0.75em;
+      padding-right: 0.75em;
+      vertical-align: top;
+      background-color: $menu-color;
+
+      a {
+        display: block;
+        @include padding-leader(0.5);
+        @include padding-trailer(0.5);
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        color: white;
+
+        &:hover {
+          background-color: lighten($menu-color, 5%);
+          text-decoration: none;
+          @include text-shadow(rgba(0, 0, 0, 0.85));
+        }
+      }
+    }
+  }
+}
+
+#main-content {
+  @extend .container;
+
+  @include padding-leader;
+
+  &.full-page {
+    #main {
+      @include full;
+    }
+
+    #sidebar {
+      display: none;
+    }
+  }
+
+  &.two-column {
+    #main {
+      @include columns(9);
+      @include alpha;
+    }
+    
+    #sidebar {
+      @include columns(3);
+      @include omega;
+    }
+  }
+}
+
+#footer-page {
+  border-top: 2px solid #aaa;
+}
+
+#footer-content {
+  @extend .container;
+
+  @include padding-leader;
+
+  .links {
+    @include full;
+    @include clearfix;
+
+    ul {
+      @include reset-box-model;
+      /* @include no-bullets; */
+      @include columns(4,12);
+
+      li {
+        @include no-bullet;
+      }
+
+      &:first-child, &.first {
+      }
+
+      /*
+       * Include a &.last rule for IE browsers, since they do not support the :last-child selector
+       *
+       * IE8 has broken CSS parsing with multiple rules on the same line as :last-child, so we need
+       * split them on separate lines. Totally lame.
+       *
+       * More here: http://www.richardscarrott.co.uk/posts/view/ie8-last-child-bug
+      */
+      &:last-child {
+        @include omega(12);
+      }
+
+      &.last {
+        @include omega(12);
+      }
+    }
+  }
+
+  span.copyright {
+    @include full;
+    @include leader;
+    display: block;
+    text-align: center;
+  }
+}
+

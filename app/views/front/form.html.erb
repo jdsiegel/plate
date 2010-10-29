@@ -1,0 +1,90 @@
+<h1>Sample Form</h1>
+
+<%= form_tag :url => root_path do |form| -%>
+  <fieldset>
+    <legend>Common Fields</legend>
+
+    <%= input_field do -%>
+      <%= label_tag :field1, "Field 1" %>
+      <%= text_field_tag :field1 %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :field2, "Field 2" %>
+      <%= text_field_tag :field2 %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :password, "Password" %>
+      <%= password_field_tag :password %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :field3, "Select Field" %>
+      <%= select_tag :field3, options_for_select(["Option 1", "Option 2", "Option 3"]) %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= check_box_tag :checkbox1 %>
+      <%= label_tag :checkbox1, "Check this for nothing" %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= radio_button_tag :radio, :radio1 %>
+      <%= label_tag :radio_radio1, "Radio 1" %>
+
+      <%= radio_button_tag :radio, :radio2 %>
+      <%= label_tag :radio_radio2, "Radio 2" %>
+
+      <%= radio_button_tag :radio, :radio3 %>
+      <%= label_tag :radio_radio3, "Radio 3" %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :field4, "Text Area" %>
+      <%= text_area_tag :field4 %>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <legend>HTML5 Fields</legend>
+
+    <%= input_field do -%>
+      <%= label_tag :email, "Email" %>
+      <%= email_field_tag :email %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :url, "URL" %>
+      <%= url_field_tag :url %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :telephone, "Telephone" %>
+      <%= telephone_field_tag :telephone %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :range, "Range" %>
+      <%= range_field_tag :range %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :number, "Number" %>
+      <%= number_field_tag :number %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :phone, "Phone" %>
+      <%= phone_field_tag :phone %>
+    <% end %>
+
+    <%= input_field do -%>
+      <%= label_tag :search, "Search" %>
+      <%= search_field_tag :search %>
+    <% end %>
+
+  </fieldset>
+
+  <%= submit_tag "Submit" %>
+<% end -%>

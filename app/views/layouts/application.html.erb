@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plate</title>
+  <%= stylesheet_link_tag 'compiled/screen.css', :media => 'screen, project' %>
+  <%= stylesheet_link_tag 'compiled/print.css', :media => 'print' %>
+  <!--[if lt IE 8]>
+    <%= stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection' %>
+  <![endif]-->
+
+  <%= javascript_include_tag :defaults %>
+
+  <!--[if IE]>
+    <%= javascript_include_tag 'ie' %>
+  <![endif]-->
+
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<!-- Debug stuffs! -->
+
+<div class="grid-control">
+  <%= link_to "Show Grid", "#", :id => "show-grid" %>
+  <%= link_to "Hide Grid", "#", :id => "hide-grid", :class => "hidden" %>
+</div>
+
+<script type="text/javascript">
+  $("#.grid-control a").click(function() {
+    $(".grid-control a").toggleClass("hidden");
+    $("#header-content, #main-content, #footer-content").toggleClass("show-grid");
+    return false;
+  });
+</script>
+
+<!-- END -->
+
+<div id="header-page">
+  <div id="header-content">
+    <div id="logo">
+      <h1>Plate</h1>
+      <h2>It's what's for dinner</h2>
+    </div>
+    <div id="top-nav" class="nav">
+      <ul>
+        <li>
+          <%= link_to "Link 1", "#" %>
+        </li>
+        <li>
+          <%= link_to "Link 2", "#" %>
+        </li>
+        <li>
+          <%= link_to "Link 3", "#" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="main-page">
+  <div id="main-content" class="<%= params[:full] ? "full-page" : "two-column" %>">
+    <div id="main">
+      <%= yield %>
+    </div>
+    <div id="sidebar">
+      Sidebar!
+    </div>
+  </div>
+</div>
+
+<div id="footer-page">
+  <div id="footer-content">
+    <div class="links">
+      <ul>
+        <li><%= link_to "The more links", "#" %></li>
+        <li><%= link_to "in the footer", "#" %></li>
+        <li><%= link_to "the more likely", "#" %></li>
+        <li><%= link_to "we'll get funded", "#" %></li>
+        <li><%= link_to "amirite? Of course!", "#" %></li>
+      </ul>
+      <ul>
+        <li><%= link_to "But you need", "#" %></li>
+        <li><%= link_to "a lot of links", "#" %></li>
+        <li><%= link_to "because otherwise", "#" %></li>
+        <li><%= link_to "how will you be", "#" %></li>
+        <li><%= link_to "considered a big deal?", "#" %></li>
+      </ul>
+      <ul class="last">
+        <li><%= link_to "So link away!", "#" %></li>
+        <li><%= link_to "They can be anything", "#" %></li>
+        <li><%= link_to "It's not like anyone", "#" %></li>
+        <li><%= link_to "Looks at the actual content", "#" %></li>
+        <li><%= link_to "Do they?", "#" %></li>
+      </ul>
+    </div>
+    <span class="copyright">Copyright © Jeff Siegel</span>
+  </div>
+</div>
+
+</body>
+</html>
