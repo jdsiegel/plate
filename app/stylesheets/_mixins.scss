@@ -1,0 +1,24 @@
+// Similar to the compass 'horizontal-list-container' mixin, but uses pie-clearfix
+// to allow drop down sub menus to extend outside the container
+@mixin dropdown-list-container {
+  @include reset-box-model;
+  @include pie-clearfix;
+}
+
+$yus: ".turkey";
+
+.turkey {
+  color: white;
+  border: none;
+}
+
+@mixin birdify($parent: false) {
+  @if $parent {
+    @extend #{$parent};
+  }
+  text-align: left;
+}
+
+.chicken {
+  @include birdify;
+}
