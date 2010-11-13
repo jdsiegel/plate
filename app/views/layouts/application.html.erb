@@ -20,6 +20,10 @@
   <!--[if IE]>
     <%= javascript_include_tag 'ie' %>
   <![endif]-->
+  <!--[if lt IE 7]>
+    <%= javascript_include_tag 'ie6' %>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+  <![endif]-->
 
   <%= csrf_meta_tag %>
 </head>
@@ -69,7 +73,7 @@
         </li>
       </ul>
     </div>
-    <div id="bar-nav">
+    <div id="bar-nav" class="nav">
       <ul>
         <li><%= link_to "Link 1", "#" %></li>
         <li>

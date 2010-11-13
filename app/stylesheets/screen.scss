@@ -55,7 +55,7 @@
 
   $menu-color: #555;
 
-  .nav {
+  #top-nav {
     @include columns(4);
     @include omega;
     @include suffix(1);
