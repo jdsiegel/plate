@@ -6,10 +6,13 @@ $(document).ready(function () {
         $(this).parent().toggleClass("active");
         return false;
     });
+    /*
+     * uncomment this if you want the menu to disappear on loss of focus
     $("li.clickdown").live('mouseleave', function() { 
-        //$(this).removeClass("active");
+        $(this).removeClass("active");
         return false;
     });
+    */
     $("body").live('click', function() {
         $("li.clickdown.active").removeClass("active");
     });

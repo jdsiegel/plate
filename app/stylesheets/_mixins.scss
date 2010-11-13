@@ -1,3 +1,5 @@
+/*** GENERAL MIXINS ***/
+
 // Similar to the compass 'horizontal-list-container' mixin, but uses pie-clearfix
 // to allow drop down sub menus to extend outside the container
 @mixin dropdown-list-container {
@@ -5,20 +7,106 @@
   @include pie-clearfix;
 }
 
-$yus: ".turkey";
+// Similar to the compass 'horizontal-list' mixin, but include support for drop-down submenus
+// 
+// The structure is assumed to be:
+// 
+// ul or ol
+//   li
+//   li
+//     ul
+//       li
+//       li
+//   li.clickdown
+//     ul
+//       li
+//       li
+@mixin dropdown-list($padding: 4px, $clickdown-class: "clickdown") {
+  @include dropdown-list-container;
 
-.turkey {
-  color: white;
-  border: none;
-}
+  > li {
+    @include horizontal-list-item($padding);
+    position: relative;
 
-@mixin birdify($parent: false) {
-  @if $parent {
-    @extend #{$parent};
+    &:not(.#{$clickdown-class}):hover {
+      ul {
+        display: block;
+      }
+    }
+
+    // IE doesn't like the :not selector shared with IE-recognizable selectors on the same line
+    // so a split is necessary.
+    //
+    // IE Only: The dropdown class is assigned to all elements that match the above :not selector
+    // See ie.js for details
+    &.dropdown:hover, &.#{$clickdown-class}.active {
+      ul {
+        display: block;
+      }
+    }
+
+    &:last-child ul {
+      right: 0;
+    }
+
+    // IE doesn't like the :last-child selector on the same line as others. split required.
+    // IE Only: .last class is assigned to all elements that match the above :last-child selector
+    &.last ul {
+      right: 0;
+    }
+
+    ul {
+      @include no-bullets;
+      display: none;
+      position: absolute;
+      top: 100%;
+      margin: 0;
+    }
   }
-  text-align: left;
 }
 
-.chicken {
-  @include birdify;
+
+/*** APP MIXINS ***/
+
+@mixin dark-nav($menu-color: #555) {
+  @include dropdown-list(5px);
+  @include border-radius(3px);
+  background-color: $menu-color;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+
+  > li {
+    &:hover, &.clickdown.active {
+      > a {
+        background-color: lighten($menu-color, 5%);
+        @include text-shadow(rgba(0, 0, 0, 0.85));
+      }
+    }
+
+    a {
+      @include padding-leader(0.5);
+      @include padding-trailer(0.5);
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      display: block;
+      color: white;
+
+      &:hover, &:focus {
+        text-decoration: none;
+        outline: none;
+      }
+    }
+
+    ul {
+      background-color: lighten($menu-color, 10%);
+      min-width: 8em;
+      margin: -1px 0 0 0;
+      border: 1px solid $menu-color;
+      @include border-bottom-radius(3px);
+
+      a:hover {
+        background-color: lighten($menu-color, 20%);
+      }
+    }
+  }
 }

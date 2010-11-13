@@ -53,6 +53,8 @@
     }
   }
 
+  $menu-color: #555;
+
   .nav {
     @include columns(4);
     @include omega;
@@ -62,84 +64,19 @@
     @include trailer(0.5);
 
     > ul {
-      $menu-color: #555;
-
-      @include dropdown-list-container;
+      @include dark-nav;
       @include inline-block;
-      @include border-radius(3px);
-      padding-left: 0.75em;
-      padding-right: 0.75em;
       vertical-align: top;
-      background-color: $menu-color;
+    }
+  }
 
-      > li {
-        @include horizontal-list-item(5px);
-        position: relative;
+  #bar-nav {
+    @include full;
+    @include padding-leader(0.5);
+    @include padding-trailer(0.5);
 
-        &:hover, &.clickdown.active {
-          > a {
-            background-color: lighten($menu-color, 5%);
-            @include text-shadow(rgba(0, 0, 0, 0.85));
-          }
-        }
-
-        a {
-          display: block;
-          @include padding-leader(0.5);
-          @include padding-trailer(0.5);
-          padding-left: 0.5em;
-          padding-right: 0.5em;
-          color: white;
-
-          &:hover, &:focus {
-            text-decoration: none;
-            outline: none;
-          }
-        }
-
-        &:not(.clickdown):hover {
-          ul {
-            display: block;
-          }
-        }
-
-        // IE doesn't like the :not selector shared with IE-recognizable selectors on the same line
-        // so a split is necessary.
-        //
-        // IE Only: The dropdown class is assigned to all elements that match the above :not selector
-        // See ie.js for details
-        &.dropdown:hover, &.clickdown.active {
-          ul {
-            display: block;
-          }
-        }
-
-        &:last-child ul {
-          right: 0;
-        }
-
-        // IE doesn't like the :last-child selector on the same line as others. split required.
-        // IE Only: .last class is assigned to all elements that match the above :last-child selector
-        &.last ul {
-          right: 0;
-        }
-
-        ul {
-          @include no-bullets;
-          display: none;
-          position: absolute;
-          top: 100%;
-          background-color: lighten($menu-color, 10%);
-          min-width: 8em;
-          margin: -1px 0 0 0;
-          border: 1px solid $menu-color;
-          @include border-bottom-radius(3px);
-
-          a:hover {
-            background-color: lighten($menu-color, 20%);
-          }
-        }
-      }
+    > ul {
+      @include dark-nav(#677);
     }
   }
 }
