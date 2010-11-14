@@ -1,5 +1,5 @@
 @media handheld, only screen and (max-width: 767px) {
-  body, .container {
+  .container {
     @include mobile-container;
   }
 
@@ -24,6 +24,9 @@
     #top-nav {
       @include mobile-column;
       text-align: center;
+      ul {
+        text-align: left;
+      }
       //@include columns(7);
     }
 

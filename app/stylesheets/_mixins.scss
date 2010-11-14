@@ -13,16 +13,17 @@
 }
 
 @mixin mobile-column($nested: false) {
-  float: left;
+  float: none;
+  display: block;
   width: auto;
   width: -moz-available;
-  padding: {
-    left: 0;
-    right: 0;
-  }
   $side-gutter: 0;
   @if not $nested {
     $side-gutter: $side-gutter-width;
+  }
+  padding: {
+    left: 0;
+    right: 0;
   }
   margin: {
     left: $side-gutter;
