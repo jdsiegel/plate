@@ -1,0 +1,47 @@
+@media handheld, only screen and (max-width: 767px) {
+  body, .container {
+    @include mobile-container;
+  }
+
+  #header-content {
+    #logo {
+      @include mobile-column;
+      //@include columns(6);
+      //@include alpha;
+      h1, h2 {
+        @include mobile-column(6);
+      }
+
+      h1 {
+        background-position: 50% 0;
+      }
+
+      h2 {
+        text-align: center;
+      }
+    }
+
+    #top-nav {
+      @include mobile-column;
+      text-align: center;
+      //@include columns(7);
+    }
+
+    #bar-nav {
+      @include mobile-column;
+    }
+  }
+
+  #main-content {
+    &.full-page, &.two-column {
+      #main {
+        @include mobile-column;
+      }
+
+      #sidebar {
+        display: none;
+      }
+    }
+  }
+
+}

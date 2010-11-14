@@ -1,5 +1,35 @@
 /*** GENERAL MIXINS ***/
 
+@mixin mobile-container {
+  width: 100%;
+  margin: {
+    left: 0;
+    right: 0;
+  };
+  padding: {
+    left: 0;
+    right: 0;
+  }
+}
+
+@mixin mobile-column($nested: false) {
+  float: left;
+  width: auto;
+  width: -moz-available;
+  padding: {
+    left: 0;
+    right: 0;
+  }
+  $side-gutter: 0;
+  @if not $nested {
+    $side-gutter: $side-gutter-width;
+  }
+  margin: {
+    left: $side-gutter;
+    right: $side-gutter;
+  };
+}
+
 // Similar to the compass 'horizontal-list-container' mixin, but uses pie-clearfix
 // to allow drop down sub menus to extend outside the container
 @mixin dropdown-list-container {
@@ -102,6 +132,7 @@
       min-width: 8em;
       margin: -1px 0 0 0;
       border: 1px solid $menu-color;
+      z-index: 100;
       @include border-bottom-radius(3px);
 
       a:hover {

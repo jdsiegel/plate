@@ -6,6 +6,7 @@
 @import "debug";
 @import "mixins";
 
+
 /* Layout -------------------------------------------------------------- */
 
 @include susy;
@@ -25,6 +26,8 @@
 // and 20 is the (optional) line-height.
 
 /* Styles -------------------------------------------------------------- */
+
+$menu-color: #555;
 
 #header-page {
 }
@@ -53,12 +56,10 @@
     }
   }
 
-  $menu-color: #555;
 
   #top-nav {
-    @include columns(4);
+    @include columns(5);
     @include omega;
-    @include suffix(1);
 
     @include leader(0.5);
     @include trailer(0.5);
@@ -106,6 +107,14 @@
       @include columns(3);
       @include omega;
     }
+  }
+
+  #sidebar-content {
+    @include box-shadow($menu-color);
+    @include border-radius;
+    border: 1px solid $menu-color;
+    padding: 1em;
+    min-height: 300px;
   }
 }
 
@@ -160,3 +169,4 @@
   }
 }
 
+@import "mobile";
