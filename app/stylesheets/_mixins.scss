@@ -59,8 +59,12 @@
     @include horizontal-list-item($padding);
     position: relative;
 
-    &:not(.#{$clickdown-class}):hover {
-      ul {
+    &:not(.#{$clickdown-class}) {
+      &:hover ul {
+        display: block;
+      }
+
+      a:focus + ul {
         display: block;
       }
     }
