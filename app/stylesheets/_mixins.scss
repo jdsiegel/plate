@@ -113,7 +113,7 @@
   padding-right: 0.75em;
 
   > li {
-    &:hover, &.clickdown.active {
+    &:hover, &:focus, &.clickdown.active {
       > a {
         background-color: lighten($menu-color, 5%);
         @include text-shadow(rgba(0, 0, 0, 0.85));
@@ -142,7 +142,7 @@
       z-index: 100;
       @include border-bottom-radius(3px);
 
-      a:hover {
+      a:hover, a:focus {
         background-color: lighten($menu-color, 20%);
       }
     }

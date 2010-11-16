@@ -1,0 +1,12 @@
+<div class="grid-control">
+  <%= link_to "Show Grid", "#", :id => "show-grid" %>
+  <%= link_to "Hide Grid", "#", :id => "hide-grid", :class => "hidden" %>
+</div>
+
+<script type="text/javascript">
+  $("#.grid-control a").click(function() {
+    $(".grid-control a").toggleClass("hidden");
+    $("header, #main-content, footer").toggleClass("show-grid");
+    return false;
+  });
+</script>
