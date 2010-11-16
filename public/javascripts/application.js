@@ -16,4 +16,5 @@ $(document).ready(function () {
     $("body").live('click', function() {
         $("li.clickdown.active").removeClass("active");
     });
+    $("a[href=#]").live('click', function() { return false; });
 });

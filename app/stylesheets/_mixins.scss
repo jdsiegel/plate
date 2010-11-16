@@ -64,8 +64,10 @@
         display: block;
       }
 
-      a:focus + ul {
-        display: block;
+      a:focus {
+        + ul {
+          display: block;
+        }
       }
     }
 
