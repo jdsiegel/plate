@@ -23,7 +23,7 @@ Here is a paragraph with a few <%= link_to "links", "#" %>. There's one <%= link
 <p>
 Here's the #fun main loop:
 <code>
-  for (int i = 0; i < MAX_FUN; i++) {
+  for (int i = 0; i &lt; MAX_FUN; i++) {
     rave_it_up();
     feel_down();
     feel_flat();
@@ -37,7 +37,7 @@ Here it is again as a block:
 <p>
 
 <pre>
-for (int i = 0; i < MAX_FUN; i++) {
+for (int i = 0; i &lt; MAX_FUN; i++) {
   rave_it_up();
   feel_down();
   feel_flat();
@@ -46,7 +46,7 @@ for (int i = 0; i < MAX_FUN; i++) {
 </pre>
 
 <ol>
-  <li>OL item 1 with a <tt>term</tt></li>
+  <li>OL item 1 with a <code>term</code></li>
   <li>OL item 2</li>
   <li>OL item 3</li>
 </ol>
@@ -92,7 +92,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis velit ligula. 
 
 <p>Now for some tables</p>
 
-<table cellspacing="0" cellpadding="0">
+<table>
   <thead>
     <tr>
       <th>HEADER 1</th>
@@ -113,5 +113,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis velit ligula. 
     <td rowspan="2">RAGGED!</td>
     <td>CELL 3 2</td>
     <td>CELL 3 3</td>
+  </tr>
+  <tr>
+    <td>CELL 4 2</td>
+    <td>CELL 4 3</td>
   </tr>
 </table>
