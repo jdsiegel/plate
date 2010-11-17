@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '~> 3.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,8 +9,9 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'jquery-rails'
 
-gem 'compass', '>= 0.10.5'
-gem 'compass-susy-plugin', '>= 0.8.1'
+gem 'compass', '~> 0.10.5'
+gem 'compass-susy-plugin', '~> 0.8.1'
+gem 'lemonade'
 
 # Use unicorn as the web server
 # gem 'unicorn'
