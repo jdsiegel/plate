@@ -6,119 +6,56 @@
 @import "debug";
 @import "mixins";
 
+@import "structure";
+@import "forms";
 
-/* Layout -------------------------------------------------------------- */
-
-@include susy;
-
-// change '.container' to match your HTML container element
-// or @extend it to apply multiple containers on your site.
-.container {
-  @include container;
-  &.show-grid {
-    @include show-grid("grid.png"); 
-  }
-}
-
-// show-grid loads a 64+16x24 grid image by default
-// For other grid settings, run `compass grid-img 30+10x20`
-// Where 30 is the column width, 10 is the gutter width,
-// and 20 is the (optional) line-height.
 
 /* Styles -------------------------------------------------------------- */
 
 $menu-color: #555;
 
-#header-page {
-}
-
-header {
-  @extend .container;
-
-  @include padding-leader;
-
-  #logo {
-    $logo-columns: 7;
-    @include columns($logo-columns);
-    @include alpha;
-
-    h1 {
-      @include columns(3, $logo-columns);
-      margin-bottom: 0;
-      a {
-        @include replace-text("plate.jpg", 0, 0);
-        display: block;
-        height: image-height("plate.jpg");
-      }
-    }
-
-    h2 {
-      @include padding-leader;
-      @include columns(4, $logo-columns);
-      @include omega($logo-columns);
-    }
-  }
-
-
-  #top-nav {
-    @include columns(5);
-    @include omega;
-
-    @include leader(0.5);
-    @include trailer(0.5);
-
-    > ul {
-      @include dark-nav;
-      @include inline-block;
-      vertical-align: top;
-    }
-  }
-
-  #bar-nav {
-    @include full;
-    @include padding-leader(0.5);
-    @include padding-trailer(0.5);
-
-    > ul {
-      @include dark-nav(#677);
+// has structure
+.logo {
+  h1 {
+    margin-bottom: 0;
+    a {
+      @include replace-text("plate.jpg", 0, 0);
+      display: block;
+      height: image-height("plate.jpg");
     }
   }
 }
 
-#main-content {
-  @extend .container;
+.nav-menu {
+  @include dark-nav(#677);
+}
 
-  @include padding-leader;
+.inline-nav-menu {
+  @include dark-nav;
+  @include inline-block;
+  vertical-align: top;
+}
 
-  &.full-page {
-    #main {
-      @include full;
-    }
+#top-nav {
+  @include columns(5);
+  @include omega;
 
-    #sidebar {
-      display: none;
-    }
-  }
+  @include leader(0.5);
+  @include trailer(0.5);
+}
 
-  &.two-column {
-    #main {
-      @include columns(9);
-      @include alpha;
-    }
-    
-    #sidebar {
-      @include columns(3);
-      @include omega;
-    }
-  }
+#bar-nav {
+  @include full;
+  @include padding-leader(0.5);
+  @include padding-trailer(0.5);
+}
 
-  #sidebar-content {
-    @include box-shadow($menu-color);
-    @include border-radius;
-    border: 1px solid $menu-color;
-    padding: 1em;
-    min-height: 300px;
-  }
+#sidebar-content {
+  @include box-shadow($menu-color);
+  @include border-radius;
+  border: 1px solid $menu-color;
+  padding: 1em;
+  min-height: 300px;
 }
 
 #footer-page {
@@ -126,10 +63,6 @@ header {
 }
 
 footer {
-  @extend .container;
-
-  @include padding-leader;
-
   .links {
     @include full;
     @include clearfix;
@@ -169,6 +102,40 @@ footer {
     @include leader;
     display: block;
     text-align: center;
+  }
+}
+
+#dialog-page {
+}
+
+#dialog-container {
+  @extend .container;
+}
+
+.dialog-box {
+  @include padding-leader(5);
+}
+
+.small-dialog-box {
+  @extend .dialog-box;
+  @include full;
+  @include prefix(3);
+  @include suffix(3);
+}
+
+body.dialog {
+  background-color: #ddd;
+}
+
+section.dialog {
+  @include border-radius;
+  border: 1px solid #444;
+  @include padding-leader(0.5);
+  @include padding-trailer(0.5);
+  background-color: white;
+  padding: {
+    left: 0.75em;
+    right: 0.75em;
   }
 }
 

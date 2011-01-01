@@ -7,4 +7,8 @@ class FrontController < ApplicationController
 
   def form
   end
+
+  def signin
+    render :layout => "skeleton"
+  end
 end

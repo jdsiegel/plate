@@ -3,10 +3,14 @@
   <%= link_to "Hide Grid", "#", :id => "hide-grid", :class => "hidden" %>
 </div>
 
-<script type="text/javascript">
-  $("#.grid-control a").click(function() {
-    $(".grid-control a").toggleClass("hidden");
-    $("header, #main-content, footer").toggleClass("show-grid");
-    return false;
-  });
-</script>
+<% content_for :page_scripts do -%>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#.grid-control a").click(function() {
+        $(".grid-control a").toggleClass("hidden");
+        $("header, #main-content, footer, #dialog-container").toggleClass("show-grid");
+        return false;
+      });
+    });
+  </script>
+<% end -%>

@@ -2,6 +2,7 @@ Plate::Application.routes.draw do
   get "front/index"
   get "front/markup"
   get "front/form"
+  get "front/signin"
 
   root :to => 'front#index'
 

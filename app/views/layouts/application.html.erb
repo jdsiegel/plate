@@ -1,54 +1,8 @@
-<!DOCTYPE html>
-
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-<head>
-
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <title>Plate</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <meta name="description" content="A template app as a base-line for my future projects" />
-  <meta name="keywords" content="template, rails, compass, css, susy, fluid, fixed width, elastic, html5, css3, grid system, grid framework" />
-
-  <%= csrf_meta_tag %>
-
-  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-  <!-- TODO: <link rel="shortcut icon" href="/favicon.ico"> -->
-  <!-- TODO: <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
-
-  <%= stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection' %>
-  <%= stylesheet_link_tag 'compiled/print.css', :media => 'print' %>
-
-  <%= javascript_include_tag 'modernizr.min' %>
-  <%= javascript_include_tag :defaults %>
-
-  <!--[if lt IE 9]>
-    <%= javascript_include_tag 'ie' %>
-  <![endif]-->
-  <!--[if lt IE 7]>
-    <%= javascript_include_tag 'ie6' %>
-    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
-  <![endif]-->
-
-</head>
-<body>
-
-<!-- Debug stuffs! -->
-
-<%= render :partial => "shared/grid_control" %>
-
-<!-- END -->
+<% content_for :body do -%>
 
 <section id="header-page">
-  <header>
-    <div id="logo">
+  <header class="container">
+    <div class="logo">
       <h1>
         <%= link_to "Plate", root_path %>
       </h1>
@@ -57,7 +11,7 @@
       </h2>
     </div>
     <nav id="top-nav">
-      <ul>
+      <ul class="inline-nav-menu">
         <li><%= link_to "Home", root_path %></li>
         <li>
           <%= link_to "Dropdown", "#" %>
@@ -78,8 +32,8 @@
       </ul>
     </nav>
     <nav id="bar-nav">
-      <ul>
-        <li><%= link_to "Link 1", "#" %></li>
+      <ul class="nav-menu">
+        <li><%= link_to "Sign In", front_signin_path %></li>
         <li>
           <%= link_to "Drop 2", "#" %>
           <ul>
@@ -105,20 +59,22 @@
 </section>
 
 <section id="main-page">
-  <div id="main-content" class="<%= params[:full] ? "full-page" : "two-column" %>">
-    <section id="main">
+  <div id="main-content" class="container <%= content_for?(:sidebar) ? "two-column" : "full-page" %>">
+    <section id="main" class="primary">
       <%= yield %>
     </section>
-    <div id="sidebar">
-      <section id="sidebar-content">
-        Sidebar!
-      </section>
-    </div>
+    <% if content_for?(:sidebar) -%>
+      <div id="sidebar" class="sidebar">
+        <section id="sidebar-content">
+          <%= yield :sidebar %>
+        </section>
+      </div>
+    <% end -%>
   </div>
 </section>
 
 <section id="footer-page">
-  <footer>
+  <footer class="container">
     <section class="links">
       <ul>
         <li><%= link_to "The more links", "#" %></li>
@@ -146,18 +102,5 @@
   </footer>
 </section>
 
-<!-- TODO: Add GA code!
-<script>
-  var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-  (function(d, t) {
-    var g = d.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-    g.async = true;
-    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g, s);
-  })(document, 'script');
-</script>
--->
-
-</body>
-</html>
+<% end -%>
+<%= render :file => 'layouts/skeleton' %>
